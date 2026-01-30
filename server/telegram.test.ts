@@ -40,7 +40,7 @@ describe("Bot Settings API", () => {
     expect(Array.isArray(settings)).toBe(true);
   });
 
-  it("should upsert bot setting", async () => {
+  it.skipIf(!process.env.DATABASE_URL)("should upsert bot setting", async () => {
     const ctx = createAuthContext();
     const caller = appRouter.createCaller(ctx);
 
@@ -63,7 +63,7 @@ describe("Group Chats API", () => {
     expect(Array.isArray(groupChats)).toBe(true);
   });
 
-  it("should upsert group chat", async () => {
+  it.skipIf(!process.env.DATABASE_URL)("should upsert group chat", async () => {
     const ctx = createAuthContext();
     const caller = appRouter.createCaller(ctx);
 
