@@ -22,5 +22,6 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY package.json ./
 
+ENV NODE_ENV=production
 EXPOSE 3000
 CMD ["node", "dist/index.js"]
