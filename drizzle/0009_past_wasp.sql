@@ -1,0 +1,1 @@
+ALTER TABLE `recurring_tasks` ADD `exclude_days` varchar(32);

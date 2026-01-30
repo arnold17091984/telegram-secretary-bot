@@ -1,0 +1,1 @@
+ALTER TABLE `payments` ADD `crypto_payment_id` varchar(255);

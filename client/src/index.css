@@ -1,0 +1,517 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ========================================
+   Neural Secretary - Cyberpunk Minimal Theme
+   ======================================== */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Custom font families */
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Cyberpunk Dark Theme - Always Dark */
+:root {
+  /* Core brand colors - Teal/Cyan accent */
+  --primary: #2dd4bf;
+  --primary-foreground: #042f2e;
+  --sidebar-primary: #2dd4bf;
+  --sidebar-primary-foreground: #042f2e;
+
+  /* Charts - Gradient from teal to cyan */
+  --chart-1: #2dd4bf;
+  --chart-2: #22d3ee;
+  --chart-3: #06b6d4;
+  --chart-4: #14b8a6;
+  --chart-5: #0d9488;
+
+  --radius: 0.5rem;
+
+  /* Dark backgrounds with subtle blue tint */
+  --background: #0a0f14;
+  --foreground: #e2e8f0;
+
+  /* Card with glass effect base */
+  --card: rgba(15, 23, 36, 0.8);
+  --card-foreground: #e2e8f0;
+
+  --popover: #0f1724;
+  --popover-foreground: #e2e8f0;
+
+  /* Secondary - Darker slate */
+  --secondary: #1e293b;
+  --secondary-foreground: #94a3b8;
+
+  /* Muted - Very subtle */
+  --muted: #1e293b;
+  --muted-foreground: #64748b;
+
+  /* Accent - Subtle teal glow */
+  --accent: rgba(45, 212, 191, 0.1);
+  --accent-foreground: #2dd4bf;
+
+  /* Destructive - Warm red */
+  --destructive: #ef4444;
+  --destructive-foreground: #fef2f2;
+
+  /* Borders - Subtle glow lines */
+  --border: rgba(45, 212, 191, 0.15);
+  --input: rgba(45, 212, 191, 0.2);
+  --ring: #2dd4bf;
+
+  /* Sidebar - Slightly different dark */
+  --sidebar: #080c10;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-accent: rgba(45, 212, 191, 0.1);
+  --sidebar-accent-foreground: #2dd4bf;
+  --sidebar-border: rgba(45, 212, 191, 0.1);
+  --sidebar-ring: #2dd4bf;
+
+  /* Custom glow colors */
+  --glow-primary: rgba(45, 212, 191, 0.4);
+  --glow-soft: rgba(45, 212, 191, 0.15);
+}
+
+/* Light mode */
+.light {
+  /* Core brand colors - Teal accent (darker for light bg) */
+  --primary: #0d9488;
+  --primary-foreground: #f0fdfa;
+  --sidebar-primary: #0d9488;
+  --sidebar-primary-foreground: #f0fdfa;
+
+  /* Charts */
+  --chart-1: #0d9488;
+  --chart-2: #0891b2;
+  --chart-3: #0e7490;
+  --chart-4: #0f766e;
+  --chart-5: #115e59;
+
+  /* Light backgrounds */
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  /* Card */
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  /* Secondary */
+  --secondary: #f1f5f9;
+  --secondary-foreground: #475569;
+
+  /* Muted */
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  /* Accent */
+  --accent: rgba(13, 148, 136, 0.08);
+  --accent-foreground: #0d9488;
+
+  /* Destructive */
+  --destructive: #ef4444;
+  --destructive-foreground: #fef2f2;
+
+  /* Borders */
+  --border: #e2e8f0;
+  --input: #cbd5e1;
+  --ring: #0d9488;
+
+  /* Sidebar */
+  --sidebar: #f1f5f9;
+  --sidebar-foreground: #0f172a;
+  --sidebar-accent: rgba(13, 148, 136, 0.08);
+  --sidebar-accent-foreground: #0d9488;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #0d9488;
+
+  /* Custom glow colors (subtle for light mode) */
+  --glow-primary: rgba(13, 148, 136, 0.25);
+  --glow-soft: rgba(13, 148, 136, 0.1);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(45, 212, 191, 0.08), transparent),
+      linear-gradient(to bottom, transparent, var(--background));
+    min-height: 100vh;
+  }
+
+  .light body,
+  body:is(.light *) {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(13, 148, 136, 0.05), transparent),
+      linear-gradient(to bottom, transparent, var(--background));
+  }
+
+  /* Selection color - light mode */
+  .light ::selection {
+    background: rgba(13, 148, 136, 0.2);
+    color: #0f172a;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(45, 212, 191, 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(45, 212, 191, 0.5);
+  }
+
+  .light ::-webkit-scrollbar-thumb {
+    background: rgba(13, 148, 136, 0.25);
+  }
+
+  .light ::-webkit-scrollbar-thumb:hover {
+    background: rgba(13, 148, 136, 0.4);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  /* Headings with tracking */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-semibold;
+  }
+
+  /* Monospace for data */
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Neural glow effect for cards */
+  .neural-card {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      135deg,
+      rgba(15, 23, 36, 0.9) 0%,
+      rgba(15, 23, 36, 0.7) 100%
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(45, 212, 191, 0.1);
+    box-shadow:
+      0 0 0 1px rgba(45, 212, 191, 0.05),
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  .light .neural-card {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(248, 250, 252, 0.9) 100%
+    );
+    border: 1px solid rgba(13, 148, 136, 0.12);
+    box-shadow:
+      0 0 0 1px rgba(13, 148, 136, 0.05),
+      0 4px 20px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .neural-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(45, 212, 191, 0.3),
+      transparent
+    );
+  }
+
+  .light .neural-card::before {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(13, 148, 136, 0.2),
+      transparent
+    );
+  }
+
+  .neural-card:hover {
+    border-color: rgba(45, 212, 191, 0.2);
+    box-shadow:
+      0 0 0 1px rgba(45, 212, 191, 0.1),
+      0 0 30px rgba(45, 212, 191, 0.1),
+      0 8px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .light .neural-card:hover {
+    border-color: rgba(13, 148, 136, 0.2);
+    box-shadow:
+      0 0 0 1px rgba(13, 148, 136, 0.08),
+      0 0 20px rgba(13, 148, 136, 0.06),
+      0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Glow text effect */
+  .glow-text {
+    text-shadow: 0 0 20px var(--glow-primary);
+  }
+
+  /* Pulse animation for status indicators */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 5px var(--glow-primary);
+    }
+    50% {
+      box-shadow: 0 0 20px var(--glow-primary), 0 0 30px var(--glow-soft);
+    }
+  }
+
+  /* Grid pattern background */
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(45, 212, 191, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 212, 191, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .light .grid-pattern {
+    background-image:
+      linear-gradient(rgba(13, 148, 136, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(13, 148, 136, 0.04) 1px, transparent 1px);
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+  }
+
+  /* Status badges */
+  .status-active {
+    @apply bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+  }
+
+  .status-pending {
+    @apply bg-amber-500/20 text-amber-400 border border-amber-500/30;
+  }
+
+  .status-inactive {
+    @apply bg-slate-500/20 text-slate-400 border border-slate-500/30;
+  }
+
+  /* Data highlight effect */
+  .data-highlight {
+    @apply font-mono text-primary;
+    text-shadow: 0 0 10px var(--glow-soft);
+  }
+
+  /* Gradient border */
+  .gradient-border {
+    position: relative;
+    background: var(--card);
+    border-radius: var(--radius);
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(45, 212, 191, 0.3),
+      transparent 50%,
+      rgba(45, 212, 191, 0.1)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Shimmer animation for loading */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(45, 212, 191, 0) 0%,
+      rgba(45, 212, 191, 0.1) 50%,
+      rgba(45, 212, 191, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Staggered fade in animation */
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Animation delays for staggered effects */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #2dd4bf 0%, #22d3ee 100%);
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply backdrop-blur-md bg-white/5;
+  }
+
+  .light .glass {
+    @apply backdrop-blur-md bg-white/70;
+  }
+
+  /* Glow shadow */
+  .shadow-glow {
+    box-shadow: 0 0 30px var(--glow-soft);
+  }
+
+  .shadow-glow-sm {
+    box-shadow: 0 0 15px var(--glow-soft);
+  }
+
+  /* Border glow */
+  .border-glow {
+    @apply border-primary/30;
+    box-shadow: 0 0 10px var(--glow-soft);
+  }
+}

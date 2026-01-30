@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+.env.*
+.git
+.github
+*.md
+.vscode
+.idea
+coverage
+.DS_Store
+.cache
+tmp
+temp

@@ -1,0 +1,1 @@
+ALTER TABLE `drafts` MODIFY COLUMN `status` enum('pending_approval','editing','approved','rejected') NOT NULL DEFAULT 'pending_approval';
