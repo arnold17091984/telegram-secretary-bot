@@ -172,7 +172,7 @@ export async function updateCryptoPaymentStatus(
 export async function checkExpiredPayments(): Promise<void> {
   const now = new Date();
   
-  for (const [paymentId, payment] of pendingCryptoPayments) {
+  for (const [paymentId, payment] of Array.from(pendingCryptoPayments)) {
     if (payment.status === "pending" && payment.expiresAt < now) {
       await updateCryptoPaymentStatus(paymentId, "expired");
       console.log(`[Crypto Payment] Payment expired: ${paymentId}`);
@@ -200,7 +200,7 @@ export function generatePaymentQRData(payment: CryptoPayment): string {
 export function getPendingPayments(organizationId: number): CryptoPayment[] {
   const payments: CryptoPayment[] = [];
   
-  for (const payment of pendingCryptoPayments.values()) {
+  for (const payment of Array.from(pendingCryptoPayments.values())) {
     if (payment.organizationId === organizationId && payment.status === "pending") {
       payments.push(payment);
     }

@@ -6,7 +6,7 @@ import { getPlanByPriceId, isYearlyPrice } from "./products";
 // Only initialize Stripe if API key is configured
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeSecretKey
-  ? new Stripe(stripeSecretKey, { apiVersion: "2024-12-18.acacia" })
+  ? new Stripe(stripeSecretKey, { apiVersion: "2024-12-18.acacia" as any })
   : null;
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
@@ -168,13 +168,14 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
 
   // Determine plan from price ID
   const priceId = subscription.items.data[0]?.price.id;
-  const plan = getPlanByPriceId(priceId) || "starter";
+  const plan = getPlanByPriceId(priceId);
+  const planId = plan?.id || "starter";
 
   // Calculate expiration date
-  const expiresAt = new Date(subscription.current_period_end * 1000);
+  const expiresAt = new Date((subscription as any).current_period_end * 1000);
 
   // Update organization subscription
-  await db.updateOrganizationSubscription(org.id, status, plan, expiresAt);
+  await db.updateOrganizationSubscription(org.id, status, planId as any, expiresAt);
 
   // Update Stripe subscription ID
   await db.updateOrganization(org.id, {
@@ -247,7 +248,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
     currency: invoice.currency || "jpy",
     paymentMethod: "stripe",
     paymentStatus: "completed",
-    stripePaymentIntentId: invoice.payment_intent as string,
+    stripePaymentIntentId: (invoice as any).payment_intent as string,
     description: `Invoice: ${invoice.id}`,
   });
 
@@ -286,7 +287,7 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
     currency: invoice.currency || "jpy",
     paymentMethod: "stripe",
     paymentStatus: "failed",
-    stripePaymentIntentId: invoice.payment_intent as string,
+    stripePaymentIntentId: (invoice as any).payment_intent as string,
     description: `Failed invoice: ${invoice.id}`,
   });
 

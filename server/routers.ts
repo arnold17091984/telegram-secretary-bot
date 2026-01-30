@@ -964,7 +964,7 @@ export const appRouter = router({
         }
         
         const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-          apiVersion: "2024-12-18.acacia",
+          apiVersion: "2024-12-18.acacia" as any,
         });
         
         const origin = ctx.req.headers.origin || "http://localhost:3000";
@@ -1013,7 +1013,7 @@ export const appRouter = router({
         }
         
         const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-          apiVersion: "2024-12-18.acacia",
+          apiVersion: "2024-12-18.acacia" as any,
         });
         
         const origin = ctx.req.headers.origin || "http://localhost:3000";
@@ -1072,9 +1072,9 @@ export const appRouter = router({
     // Get supported cryptocurrencies
     getSupportedCryptos: publicProcedure.query(async () => {
       const { SUPPORTED_CRYPTOS } = await import("./crypto/cryptoPayment");
-      return Object.entries(SUPPORTED_CRYPTOS).map(([symbol, info]) => ({
-        symbol,
+      return Object.entries(SUPPORTED_CRYPTOS).map(([key, info]) => ({
         ...info,
+        symbol: key,
       }));
     }),
 
